@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addUser, removeUser } from '../actions';
 
 class App extends Component {
   constructor(props) {
@@ -11,11 +12,11 @@ class App extends Component {
   removeUser(index) {
     const { props } = this;
     const { dispatch } = props;
-    dispatch({ type: 'REMOVE_USER', payload: index });
+    dispatch(removeUser(index));
   }
   addUser() {
     const { dispatch } = this.props;
-    dispatch({ type: 'ADD_USER' });
+    dispatch(addUser());
   }
   renderList() {
     const { props } = this;
