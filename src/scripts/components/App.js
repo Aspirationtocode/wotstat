@@ -1,13 +1,43 @@
-import React, { Compoment } from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-class App extends React.Component {
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.renderList = this.renderList.bind(this);
+    this.addUser = this.addUser.bind(this);
+    this.removeUser = this.removeUser.bind(this);
+  }
+  removeUser(index) {
+    const { props } = this;
+    const { dispatch } = props;
+    dispatch({ type: 'REMOVE_USER', payload: index });
+  }
+  addUser() {
+    const { dispatch } = this.props;
+    dispatch({ type: 'ADD_USER' });
+  }
+  renderList() {
+    const { props } = this;
+    return props.users.map((user, i) => (
+      <li className="list__item" key={i} onClick={() => this.removeUser(i)}>{user}</li>
+    ));
+  }
   render() {
     return (
-      <div>
-        <div>App</div>
+      <div className="app">
+        <button className="add-user" onClick={this.addUser}>Добавить пользователя</button>
+        <ul className="list">
+          {this.renderList()}
+        </ul>
       </div>
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    users: state.users,
+  };
+}
 
-export default App;
+export default connect(mapStateToProps)(App);
