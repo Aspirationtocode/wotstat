@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addUser, removeUser } from '../actions';
+import { addUser, removeUser, fetchUsers } from '../actions';
 
 class App extends Component {
   constructor(props) {
@@ -18,18 +18,28 @@ class App extends Component {
     const { dispatch } = this.props;
     dispatch(addUser());
   }
-  renderList() {
+  renderList(fetched) {
     const { props } = this;
-    return props.users.map((user, i) => (
-      <li className="list__item" key={i} onClick={() => this.removeUser(i)}>{user}</li>
-    ));
+    if (fetched) {
+      return props.users.map((user, i) => (
+        <li className="list__item" key={i} onClick={() => this.removeUser(i)}>
+          {`${user.fname} ${user.lname}`}
+        </li>
+      ));
+    }
+    return <div>Загрузка</div>;
+  }
+  componentWillMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchUsers(dispatch));
   }
   render() {
+    const { props } = this;
     return (
       <div className="app">
         <button className="add-user" onClick={this.addUser}>Добавить пользователя</button>
         <ul className="list">
-          {this.renderList()}
+          {this.renderList(props.fetched)}
         </ul>
       </div>
     );
@@ -37,7 +47,8 @@ class App extends Component {
 }
 function mapStateToProps(state) {
   return {
-    users: state.users,
+    users: state.users.data,
+    fetched: state.users.fetched,
   };
 }
 
