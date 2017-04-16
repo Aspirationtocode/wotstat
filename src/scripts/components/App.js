@@ -35,7 +35,6 @@ class App extends Component {
   }
   render() {
     const { props } = this;
-    console.log(props);
     return (
       <div className="app">
         <button className="add-user" onClick={this.addUser}>Добавить пользователя</button>
