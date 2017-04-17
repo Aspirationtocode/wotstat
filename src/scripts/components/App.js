@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addUser, removeUser, fetchUsers } from '../actions';
 
@@ -8,6 +9,10 @@ class App extends Component {
     this.renderList = this.renderList.bind(this);
     this.addUser = this.addUser.bind(this);
     this.removeUser = this.removeUser.bind(this);
+  }
+  componentWillMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchUsers(dispatch));
   }
   removeUser(index) {
     const { props } = this;
@@ -20,18 +25,14 @@ class App extends Component {
   }
   renderList(fetched) {
     const { props } = this;
-    if (fetched) {
+    if (fetched && props.users.length) {
       return props.users.map((user, i) => (
-        <li className="list__item" key={i} onClick={() => this.removeUser(i)}>
+        <li className="list__item" key={user.id} onClick={() => this.removeUser(i)}>
           {`${user.fname} ${user.lname}`}
         </li>
       ));
     }
     return <div>Загрузка пользователей...</div>;
-  }
-  componentWillMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchUsers(dispatch));
   }
   render() {
     const { props } = this;
@@ -51,5 +52,9 @@ function mapStateToProps(state) {
     fetched: state.users.fetched,
   };
 }
+
+App.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps)(App);

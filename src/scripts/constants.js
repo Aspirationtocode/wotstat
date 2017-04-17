@@ -1,1 +1,3 @@
-export const USERS_URL = 'http://aspirationtocode.github.io/json-examples/company.json';
+export const FETCH_USERS_DATA = 'FETCH_USERS_DATA';
+export const ADD_USER = 'ADD_USER';
+export const REMOVE_USER = 'REMOVE_USER';

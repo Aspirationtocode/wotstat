@@ -1,5 +1,8 @@
 import random from 'random-name';
 import assign from 'object-assign';
+import shortid from 'shortid';
+import database from '../database';
+import { FETCH_USERS_DATA, ADD_USER, REMOVE_USER } from '../constants';
 
 const initialState = {
   fetched: false,
@@ -9,22 +12,30 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCH_USERS_DATA': {
+    case FETCH_USERS_DATA: {
       return assign({}, state, { fetched: true, data: action.payload });
     }
-    case 'ADD_USER': {
+    case ADD_USER: {
+      const newUsers = [
+        ...state.data,
+        { fname: random.first(), lname: random.last(), id: shortid.generate() },
+      ];
+      database.uploadUsers(newUsers);
       return assign({}, state, {
-        data: [...state.data, { fname: random.first(), lname: random.last() }],
+        data: newUsers,
       });
     }
-    case 'REMOVE_USER': {
+    case REMOVE_USER: {
       const index = action.payload;
-      let newUsers = [...state.data];
+      const newUsers = [...state.data];
       newUsers.splice(index, 1);
+      database.uploadUsers(newUsers);
       return assign({}, state, { data: newUsers });
     }
+    default: {
+      return state;
+    }
   }
-  return state;
 };
 
 export default usersReducer;
