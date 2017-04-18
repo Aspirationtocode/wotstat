@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addUser, removeUser, fetchUsers } from '../actions';
+import User from './User';
 
 class App extends Component {
   constructor(props) {
@@ -27,9 +28,12 @@ class App extends Component {
     const { props } = this;
     if (fetched && props.users.length) {
       return props.users.map((user, i) => (
-        <li className="list__item" key={user.id} onClick={() => this.removeUser(i)}>
-          {`${user.fname} ${user.lname}`}
-        </li>
+        <User
+          key={user.id}
+          removeUser={() => this.removeUser(i)}
+          fname={user.fname}
+          lname={user.lname}
+        />
       ));
     }
     return <div>Загрузка пользователей...</div>;
@@ -39,7 +43,7 @@ class App extends Component {
     return (
       <div className="app">
         <button className="add-user" onClick={this.addUser}>Добавить пользователя</button>
-        <ul className="list">
+        <ul className="user-list">
           {this.renderList(props.fetched)}
         </ul>
       </div>
