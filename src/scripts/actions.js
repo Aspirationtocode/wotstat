@@ -1,5 +1,7 @@
 import database from './database';
-import { FETCH_USERS_DATA, ADD_USER, REMOVE_USER } from './constants';
+import { FETCH_USERS_DATA, ADD_USER, REMOVE_USER, CHANGE_CURRENT_USER_ID } from './constants';
+
+export const changeCurrentUserId = id => ({ type: CHANGE_CURRENT_USER_ID, payload: id });
 
 export const addUser = () => ({ type: ADD_USER });
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addUser, removeUser, fetchUsers } from '../actions';
-import User from './User';
+import User from '../components/User';
 
 class App extends Component {
   constructor(props) {
@@ -33,6 +33,7 @@ class App extends Component {
           removeUser={() => this.removeUser(i)}
           fname={user.fname}
           lname={user.lname}
+          id={user.id}
         />
       ));
     }
@@ -41,7 +42,7 @@ class App extends Component {
   render() {
     const { props } = this;
     return (
-      <div className="app">
+      <div className="root">
         <button className="add-user" onClick={this.addUser}>Добавить пользователя</button>
         <ul className="user-list">
           {this.renderList(props.fetched)}
