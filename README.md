@@ -1,2 +1,3 @@
-# aspire-webpack
-Simple webpack-2 starter kit by Evgeny Kulazhskiy
+# aspire-webpack-react
+Simple webpack-2-react starter kit by Evgeny Kulazhskiy
+
