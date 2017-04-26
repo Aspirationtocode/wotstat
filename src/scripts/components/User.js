@@ -15,8 +15,10 @@ class User extends Component {
   render() {
     const { props } = this;
     return (
-      <li className="user" onClick={() => this.changeCurrentUserId(props.id)}>
-        {`${props.fname} ${props.lname}`}
+      <li className="user">
+        <div className="user__text" onClick={() => this.changeCurrentUserId(props.id)}>
+          {`${props.fname} ${props.lname}`}
+        </div>
         <div className="user__remove-button" onClick={props.removeUser} />
       </li>
     );

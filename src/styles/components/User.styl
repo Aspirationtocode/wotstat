@@ -1,7 +1,6 @@
 .user
 	transition all ease .3s
 	user-select none
-	padding 5px 10px
 	align-items center
 	justify-content space-between
 	display flex
@@ -10,9 +9,13 @@
 		color #fff
 		cursor pointer
 
+	&__text
+		margin 5px 10px
+		flex-grow 1
+
 	&__remove-button
-		width 32px
-		height 32px
+		width 28px
+		height 28px
 		image-bg('delete.svg')
 		transition all ease .6s
 
