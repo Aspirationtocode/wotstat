@@ -1,12 +1,9 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import usersReducer from './users-reducer';
-import currentUserReducer from './current-user-reducer';
+import searchPlayersReducer from './searchPlayersReducer';
 
 const allReducers = combineReducers({
-  users: usersReducer,
-  currentUserId: currentUserReducer,
-  router: routerReducer,
+  searchPlayers: searchPlayersReducer,
 });
 
 export default allReducers;

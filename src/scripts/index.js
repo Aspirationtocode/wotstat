@@ -12,8 +12,8 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 
 import '../index.html';
 import '../styles/main.styl';
-import App from './containers/App';
-import UserInDetail from './containers/UserInDetail';
+import StartPage from './containers/StartPage';
+
 import allReducers from './reducers';
 
 const history = createHistory();
@@ -32,8 +32,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/:id" component={UserInDetail} />
+        <Route exact path="/" component={StartPage} />
       </Switch>
     </ConnectedRouter>
   </Provider>,
