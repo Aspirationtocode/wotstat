@@ -1,3 +1,3 @@
-# aspire-webpack-react
-Simple webpack-2-react starter kit by Evgeny Kulazhskiy
+# wot-stat-app
+Simple app that communicating with WOT API
 
