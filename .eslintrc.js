@@ -5,6 +5,7 @@ module.exports = {
   },
   plugins: ['react', 'jsx-a11y', 'import'],
   rules: {
+    'linebreak-style': ['error', 'windows'],
     'react/jsx-filename-extension': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',

@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
 import createHistory from 'history/createBrowserHistory';
-import { Router, Route, IndexRedirect, Switch } from 'react-router';
+import { Route, Switch } from 'react-router';
 
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 

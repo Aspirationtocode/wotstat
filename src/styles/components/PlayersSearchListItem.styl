@@ -1,0 +1,67 @@
+.players-search-list-item
+	box-sizing border-box
+	flex-grow 1
+	position relative
+	display flex
+	justify-content space-between
+	padding 4px 16px
+	margin-bottom 2px
+	border 1px solid #B9B6B6
+	border-right 0
+	border-left 0
+	color #fff
+	font-family RobotoCondensedLight
+
+	@media screen and (min-width: 400px)
+		flex-basis calc(50% - 16px)
+		border 1px solid #B9B6B6
+	@media screen and (min-width: 600px)
+		margin 8px
+	@media screen and (min-width: 960px)
+		flex-basis calc(33% - 16px)
+	@media screen and (min-width: 1200px)
+		flex-basis 18%
+
+	&:nth-child(even)
+		background-color #636447
+		background linear-gradient( to right, #636447, #808156)
+
+	&:nth-child(odd)
+		background-color #808156
+		background linear-gradient( to right, #808156, #636447)
+
+	&__right-part
+		display flex
+		flex-direction column
+		justify-content flex-end
+		padding-bottom 6px
+
+	&__player-battles
+		font-family RobotoCondensedBold
+		font-size 20px
+		display flex
+		margin-bottom 4px
+		align-items center
+
+	&__player-battles-icon
+		image-bg('battles.svg')
+		size(16px)
+		margin-right 14px
+
+	&__player-battles-text
+		margin-right 3px
+
+	&__player-nickname
+		font-size 20px
+		margin-top 4px
+		margin-bottom 6px
+
+	&__personal-rating-image
+		position absolute
+		right -1px
+		top -4px
+		image-bg('personal-rating.png')
+		size(66px)
+
+	&__personal-rating-text
+		font-size 16px

@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
-import wot from '../wot';
 
 class SearchInput extends Component {
   constructor() {
     super();
     this.state = {
       value: 'Введите имя игрока',
+      error: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange() {
-    const inputValue = this.refs.searchInput.value;
+    const inputValue = this.searchInput.value;
+    if (inputValue.length >= 3) {
+      this.setState({ error: false });
+    } else {
+      this.setState({ error: true });
+    }
     this.setState({
       value: inputValue,
     });
@@ -19,23 +24,31 @@ class SearchInput extends Component {
 
   render() {
     const { state } = this;
+    const classes = ['search-input'];
+    if (state.error) {
+      classes.push('search-input--error');
+    }
     return (
       <input
         type="text"
-        ref="searchInput"
+        ref={(ref) => {
+          this.searchInput = ref;
+        }}
         value={state.value}
-        className="search-input"
+        className={classes.join(' ')}
         onChange={this.handleChange}
         onFocus={() => {
           this.setState({ value: '' });
         }}
         onBlur={() => {
-          this.setState({ value: 'Введите имя игрока' });
+          this.setState({ value: 'Введите имя игрока', error: false });
         }}
         onKeyUp={(e) => {
           if (e.key === 'Enter') {
-            const { props, state } = this;
-            props.handleSearch(state.value);
+            const { props } = this;
+            if (!state.error) {
+              props.handleSearch(state.value);
+            }
           }
         }}
       />

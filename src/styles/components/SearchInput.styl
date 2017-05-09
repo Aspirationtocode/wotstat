@@ -1,4 +1,5 @@
 .search-input
+	position relative
 	outline none
 	padding 12px 16px
 	border none
@@ -8,3 +9,15 @@
 	color #E2E2E2
 	font-size 26px
 	font-family OpenSansCondLight
+
+	&--error
+		background-color red
+	&--error::before
+		content "Введите минимум 3 символа"
+		width 100px
+		height 100px
+		background-color black
+		z-index 100
+		position absolute
+		top 0
+		left 0

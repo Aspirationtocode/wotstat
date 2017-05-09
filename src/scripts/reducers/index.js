@@ -4,6 +4,7 @@ import searchPlayersReducer from './searchPlayersReducer';
 
 const allReducers = combineReducers({
   searchPlayers: searchPlayersReducer,
+  router: routerReducer,
 });
 
 export default allReducers;
