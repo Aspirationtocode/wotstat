@@ -1,0 +1,11 @@
+import '../index.html';
+import '../styles/main.styl';
+import '../manifest.json';
+import '../static/assets/images/manifest/icon-72x72.png';
+import '../static/assets/images/manifest/icon-96x96.png';
+import '../static/assets/images/manifest/icon-128x128.png';
+import '../static/assets/images/manifest/icon-144x144.png';
+import '../static/assets/images/manifest/icon-152x152.png';
+import '../static/assets/images/manifest/icon-192x192.png';
+import '../static/assets/images/manifest/icon-384x384.png';
+import '../static/assets/images/manifest/icon-512x512.png';

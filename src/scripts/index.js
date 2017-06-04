@@ -10,8 +10,8 @@ import { Route, Switch } from 'react-router';
 
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 
-import '../index.html';
-import '../styles/main.styl';
+import importStatic from './importStatic';
+
 import StartPage from './containers/StartPage';
 
 import allReducers from './reducers';

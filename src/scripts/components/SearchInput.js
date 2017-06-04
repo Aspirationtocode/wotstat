@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { bindMethodsToComponent } from '../constants';
 
 class SearchInput extends Component {
   constructor() {
@@ -7,7 +8,7 @@ class SearchInput extends Component {
       value: 'Введите имя игрока',
       error: false,
     };
-    this.handleChange = this.handleChange.bind(this);
+    bindMethodsToComponent(this, 'handleChange');
   }
 
   handleChange() {

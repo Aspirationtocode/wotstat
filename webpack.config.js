@@ -74,6 +74,10 @@ module.exports = {
         test: /\.(eot|ttf|woff|woff2)$/,
         use: 'file-loader?name=[name].[ext]&outputPath=fonts/',
       },
+      {
+        test: /manifest.json$/,
+        use: 'file-loader?name=manifest.json',
+      },
     ],
   },
   devtool: sourcemap,

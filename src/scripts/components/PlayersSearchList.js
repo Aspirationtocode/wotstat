@@ -3,15 +3,14 @@ import { connect } from 'react-redux';
 import { fetchSearchPlayers, clearSearchPlayers } from '../actions';
 import SearchInput from './SearchInput';
 import Preloader from './Preloader';
-import { roundNumber } from '../constants';
+import { roundNumber, bindMethodsToComponent } from '../constants';
 import Proschet from './Proschet';
 import PlayerSearchListItem from './PlayerSearchListItem';
 
 class PlayersSearchList extends Component {
   constructor(props) {
     super(props);
-    this.handleSearch = this.handleSearch.bind(this);
-    this.renderPlayers = this.renderPlayers.bind(this);
+    bindMethodsToComponent(this, 'handleSearch', 'renderPlayers');
   }
   handleSearch(query) {
     const { props } = this;
